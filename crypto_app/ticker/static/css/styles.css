@@ -1,0 +1,28 @@
+/* ticker/static/css/styles.css */
+body {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: black;
+    color: white;
+}
+
+#btcPrice {
+    font-size: 2em;
+    font-weight: bold;
+    color: #f2a900;
+}
+
+img.bitcoin-image {
+    width: 90px; /* or any size you prefer */
+    margin: 90px 0;
+}
+
+input, button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+button {
+    cursor: pointer;
+}

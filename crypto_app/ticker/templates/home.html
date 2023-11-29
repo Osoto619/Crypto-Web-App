@@ -1,0 +1,43 @@
+<!-- ticker/templates/home.html -->
+{% load static %}
+{% load humanize %}  <!-- Load the humanize library -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bitcoin Price Ticker</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <img src="{% static 'images/bitcoin.png' %}" alt="Bitcoin" class="bitcoin-image">
+    <h1>Bitcoin Price: <span id="btcPrice">${{ btc_price|intcomma }}</span></h1>
+    
+    <!-- User Input for BTC amount -->
+    <div>
+        <label for="btcAmount">Enter your Bitcoin amount:</label>
+        <input type="number" id="btcAmount" step="0.000001" min="0" placeholder="Enter amount" />
+        <button onclick="calculateUSD()">Convert to USD</button>
+    </div>
+    
+    <!-- Display the USD equivalent -->
+    <h2>USD Equivalent: <span id="usdEquivalent"></span></h2>
+
+    <script>
+        // Function to calculate the USD equivalent
+        function calculateUSD() {
+            var btcAmount = parseFloat(document.getElementById('btcAmount').value) || 0;
+            var btcPrice = {{ btc_price|safe }};
+            var usdEquivalent = btcAmount * btcPrice;
+            document.getElementById('usdEquivalent').innerText = '$' + usdEquivalent.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+    </script>
+    
+    
+    
+    
+</body>
+</html>
+
